@@ -8,29 +8,45 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18012394433"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18012394433"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'AW-18012394433');
-</script>
-    <!-- Taboola Pixel Code -->
-<script type='text/javascript'>
-  window._tfa = window._tfa || [];
-  window._tfa.push({notify: 'event', name: 'page_view', id: 1921228});
-  !function (t, f, a, x) {
-         if (!document.getElementById(x)) {
-            t.async = 1;t.src = a;t.id=x;f.parentNode.insertBefore(t, f);
-         }
-  }(document.createElement('script'),
-  document.getElementsByTagName('script')[0],
-  '//cdn.taboola.com/libtrc/unip/1921228/tfa.js',
-  'tb_tfa_script');
-</script>
-<!-- End of Taboola Pixel Code -->
+      gtag('config', 'AW-18012394433');
+    </script>
+
+    <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-18012394433/zxU0CMq20YkcEMGn_YxD',
+          'value': 1.0,
+          'currency': 'BRL',
+          'event_callback': callback
+      });
+      return false;
+    }
+    </script>
+    
+    <script type='text/javascript'>
+      window._tfa = window._tfa || [];
+      window._tfa.push({notify: 'event', name: 'page_view', id: 1921228});
+      !function (t, f, a, x) {
+             if (!document.getElementById(x)) {
+                t.async = 1;t.src = a;t.id=x;f.parentNode.insertBefore(t, f);
+             }
+      }(document.createElement('script'),
+      document.getElementsByTagName('script')[0],
+      '//cdn.taboola.com/libtrc/unip/1921228/tfa.js',
+      'tb_tfa_script');
+    </script>
     <script>
         tailwind.config = {
             theme: {
@@ -258,7 +274,7 @@
                                 <p class="text-gray-600 mt-2">Sua chance de aprovação está em <span class="font-bold">95%</span></p>
                             </div>
                             
-                            <a id="whatsappBtn" href="#" class="inline-block bg-success hover:bg-success-dark text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 pulse">
+                            <a id="whatsappBtn" href="#" onclick="return gtag_report_conversion(this.href);" class="inline-block bg-success hover:bg-success-dark text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 pulse">
                                 <i class="fab fa-whatsapp mr-2"></i> Falar agora com um consultor especialista
                             </a>
                         </div>
@@ -499,9 +515,6 @@
                     body: new URLSearchParams(formData).toString()
                 });
 
-                // Verificar se houve erro de CPF duplicado (mesmo com no-cors, o Google Apps Script retornará erro)
-                // Como não podemos ler a resposta em modo no-cors, confiamos que a validação anterior já impediu CPFs duplicados
-                
                 stopLoadingMessages();
                 showResult();
 
